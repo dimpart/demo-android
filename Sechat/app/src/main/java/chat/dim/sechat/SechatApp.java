@@ -134,15 +134,15 @@ public final class SechatApp extends Application {
     static {
 
         Log.level = Log.DEBUG;
-        //Log.showCaller = false;
+        //Log.showMethod = true;
         Log.logger = new DefaultLogger(new LogPrinter() {
             @Override
-            protected void println(String tag, LogCaller caller, String msg) {
+            protected void println(String msg, String tag, LogCaller caller) {
                 String filename;
                 if (caller == null) {
                     filename = null;
                 } else {
-                    filename = caller.filename.split("\\.")[0];
+                    filename = caller.getClassName();
                 }
                 switch (tag) {
                     case Logger.DEBUG_TAG:
