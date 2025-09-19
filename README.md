@@ -9,19 +9,19 @@ Dependencies:
 		- [MingKeMing (mkm-java)](https://github.com/dimchat/mkm-java)
 		- [Crypto](https://github.com/dimchat/mkm-java/tree/master/Crypto) digest, coders & keys
 - Plugins
-	- [Core Plugins](https://github.com/dimchat/sdk-java/tree/master/Plugins)
-	- [Crypto Plugins](https://github.com/dimchat/sdk-java/tree/master/CryptoPlugins) - key plugins powered by [bouncy-castle](https://www.bouncycastle.org/)
-	- [Native Plugins](https://github.com/dimchat/sdk-java/tree/master/NativePlugins) - key plugins based on JNI
-- [Network Module](https://github.com/dimchat/sdk-java/tree/master/StarGate)
+	- [Core Plugins](https://github.com/dimchat/plugins-java/tree/master/Plugins)
+	- [Crypto Plugins](https://github.com/dimchat/plugins-java/tree/master/CryptoPlugins) - key plugins powered by [bouncy-castle](https://www.bouncycastle.org/)
+	- [Native Plugins](https://github.com/dimchat/plugins-java/tree/master/NativePlugins) - key plugins based on JNI
+- [Network Module](https://github.com/dimpart/demo-java/tree/master/StarGate)
 	- [Star Trek](https://github.com/moky/StarTrek) channel, connection, hub, ...
 	- [TCP](https://github.com/moky/wormhole/tree/master/tcp-java)
 	- [UDP](https://github.com/moky/wormhole/tree/master/udp-java)
 	- [State Machine](https://github.com/moky/FiniteStateMachine/tree/master/fsm-java)
 - Demo Libs
-	- [Common](https://github.com/dimchat/demo-java/tree/main/Common) - common module for station/client
-	- [Network](https://github.com/dimchat/demo-java/tree/main/Network) - network module for station/client
-	- [Database](https://github.com/dimchat/demo-java/tree/main/SQLite) - database module powered by [SQLite](https://xerial.org/)
-	- [Client](https://github.com/dimchat/demo-java/tree/main/Client) - client module
+	- [Common](https://github.com/dimpart/demo-java/tree/main/Common) - common module for station/client
+	- [Network](https://github.com/dimpart/demo-java/tree/main/Network) - network module for station/client
+	- [Database](https://github.com/dimpart/demo-java/tree/main/SQLite) - database module powered by [SQLite](https://xerial.org/)
+	- [Client](https://github.com/dimpart/demo-java/tree/main/Client) - client module
 
 ## Sub Modules
 
@@ -29,12 +29,12 @@ Dependencies:
 
 |   Module   | Version |  Description     |
 |------------|---------|------------------|
-| Crypto     | 0.6.2   | Keys             |
-| MingKeMing | 0.10.2  | Account Module   |
-| DaoKeDao   | 0.10.2  | Message Module   |
-| DIMP       | 0.10.3  | Core Protocols   |
-| SDK        | 0.8.6   |                  |
-| Plugins    | 0.4.4   |                  |
+| Crypto     | 2.1.0   | Keys             |
+| MingKeMing | 2.1.0   | Account Module   |
+| DaoKeDao   | 2.1.0   | Message Module   |
+| DIMP       | 2.1.0   | Core Protocols   |
+| SDK        | 2.1.0   |                  |
+| Plugins    | 2.1.0   |                  |
 
 ### Network Modules
 
@@ -45,18 +45,18 @@ Dependencies:
 | STUN       | 0.1.5   |                  |
 | TURN       | 0.1.5   |                  |
 | MTP        | 0.1.7   | Network Packing  |
-| StarTrek   | 0.3.8   | Transport        |
-| TCP        | 0.3.8   |                  |
-| UDP        | 0.3.8   |                  |
+| StarTrek   | 1.1.0   | Transport        |
+| TCP        | 1.1.0   |                  |
+| UDP        | 1.1.0   |                  |
 | DMTP       | 0.2.3   | Binary Messaging |
 
 ### Others
 
 |   Module   | Version |  Description     |
 |------------|---------|------------------|
-| FSM        | 0.2.5   | State Machine    |
-| StarGate   | 0.4.1   | Transport        |
-| LNC        | 0.1.1   | Notification     |
+| FSM        | 1.1.0   | State Machine    |
+| StarGate   | 1.1.0   | Transport        |
+| LNC        | 0.2.1   | Notification     |
 | DOS        | 0.1.3   | File System      |
 
 
