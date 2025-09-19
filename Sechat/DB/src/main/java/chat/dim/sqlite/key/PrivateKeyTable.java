@@ -33,10 +33,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import chat.dim.crypto.DecryptKey;
-import chat.dim.crypto.PrivateKey;
 import chat.dim.format.JSON;
+import chat.dim.protocol.DecryptKey;
 import chat.dim.protocol.ID;
+import chat.dim.protocol.PrivateKey;
 import chat.dim.sqlite.DataTable;
 import chat.dim.sqlite.Database;
 

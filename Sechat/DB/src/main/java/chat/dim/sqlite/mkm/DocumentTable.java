@@ -35,11 +35,11 @@ import java.util.List;
 import java.util.Map;
 
 import chat.dim.format.Base64;
-import chat.dim.format.TransportableData;
 import chat.dim.log.Log;
 import chat.dim.mkm.DocumentUtils;
 import chat.dim.protocol.Document;
 import chat.dim.protocol.ID;
+import chat.dim.protocol.TransportableData;
 import chat.dim.sqlite.DataTable;
 import chat.dim.sqlite.Database;
 

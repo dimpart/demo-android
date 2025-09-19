@@ -28,9 +28,9 @@ package chat.dim.sqlite.key;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import chat.dim.crypto.SymmetricKey;
 import chat.dim.format.JSON;
 import chat.dim.protocol.ID;
+import chat.dim.protocol.SymmetricKey;
 import chat.dim.sqlite.DataTable;
 import chat.dim.sqlite.Database;
 

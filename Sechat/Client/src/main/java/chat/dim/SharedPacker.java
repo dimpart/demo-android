@@ -28,13 +28,13 @@ package chat.dim;
 import java.io.IOException;
 import java.util.Map;
 
-import chat.dim.crypto.SymmetricKey;
 import chat.dim.model.MessageDataSource;
 import chat.dim.protocol.Content;
 import chat.dim.protocol.FileContent;
 import chat.dim.protocol.InstantMessage;
 import chat.dim.protocol.ReliableMessage;
 import chat.dim.protocol.SecureMessage;
+import chat.dim.protocol.SymmetricKey;
 
 public class SharedPacker extends ClientMessagePacker {
 

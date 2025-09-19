@@ -34,12 +34,9 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import chat.dim.crypto.SymmetricKey;
 import chat.dim.digest.MD5;
 import chat.dim.dkd.BaseTextContent;
 import chat.dim.format.Hex;
-import chat.dim.format.PortableNetworkFile;
-import chat.dim.format.TransportableData;
 import chat.dim.group.SharedGroupManager;
 import chat.dim.http.FileTransfer;
 import chat.dim.http.UploadRequest;
@@ -50,14 +47,17 @@ import chat.dim.notification.Notification;
 import chat.dim.notification.NotificationCenter;
 import chat.dim.notification.NotificationNames;
 import chat.dim.notification.Observer;
+import chat.dim.protocol.AudioContent;
 import chat.dim.protocol.Content;
 import chat.dim.protocol.FileContent;
 import chat.dim.protocol.ID;
+import chat.dim.protocol.ImageContent;
 import chat.dim.protocol.InstantMessage;
+import chat.dim.protocol.PortableNetworkFile;
 import chat.dim.protocol.ReliableMessage;
+import chat.dim.protocol.SymmetricKey;
 import chat.dim.protocol.TextContent;
-import chat.dim.protocol.file.AudioContent;
-import chat.dim.protocol.file.ImageContent;
+import chat.dim.protocol.TransportableData;
 import chat.dim.type.Pair;
 
 public class Emitter implements Observer {

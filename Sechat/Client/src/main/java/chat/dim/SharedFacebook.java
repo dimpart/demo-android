@@ -32,14 +32,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import chat.dim.crypto.PrivateKey;
 import chat.dim.database.AddressNameTable;
 import chat.dim.database.UserTable;
 import chat.dim.dbi.AccountDBI;
-import chat.dim.format.PortableNetworkFile;
 import chat.dim.http.FileTransfer;
 import chat.dim.mkm.User;
 import chat.dim.protocol.ID;
+import chat.dim.protocol.PortableNetworkFile;
+import chat.dim.protocol.PrivateKey;
 import chat.dim.protocol.Visa;
 import chat.dim.type.Pair;
 

@@ -28,7 +28,7 @@ package chat.dim.cpu.customized;
 import chat.dim.Facebook;
 import chat.dim.Messenger;
 import chat.dim.cpu.app.BaseCustomizedHandler;
-import chat.dim.dkd.AppCustomizedContent;
+import chat.dim.dkd.app.AppCustomizedContent;
 import chat.dim.protocol.ContentType;
 import chat.dim.protocol.CustomizedContent;
 

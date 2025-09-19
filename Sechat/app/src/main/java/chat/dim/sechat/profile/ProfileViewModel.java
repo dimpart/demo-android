@@ -7,11 +7,11 @@ import org.web3j.crypto.Credentials;
 
 import java.util.Locale;
 
-import chat.dim.crypto.SignKey;
 import chat.dim.format.Hex;
 import chat.dim.mkm.ETHAddress;
 import chat.dim.protocol.Address;
 import chat.dim.protocol.ID;
+import chat.dim.protocol.SignKey;
 import chat.dim.sechat.model.UserViewModel;
 import chat.dim.wallet.Wallet;
 import chat.dim.wallet.WalletFactory;

@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import chat.dim.crypto.DecryptKey;
-import chat.dim.crypto.PrivateKey;
-import chat.dim.crypto.SymmetricKey;
 import chat.dim.database.ContactTable;
 import chat.dim.database.DocumentTable;
 import chat.dim.database.GroupTable;
@@ -25,12 +22,15 @@ import chat.dim.dbi.StationInfo;
 import chat.dim.mkm.MetaUtils;
 import chat.dim.notification.NotificationCenter;
 import chat.dim.notification.NotificationNames;
+import chat.dim.protocol.DecryptKey;
 import chat.dim.protocol.Document;
-import chat.dim.protocol.GroupCommand;
 import chat.dim.protocol.ID;
 import chat.dim.protocol.LoginCommand;
 import chat.dim.protocol.Meta;
+import chat.dim.protocol.PrivateKey;
 import chat.dim.protocol.ReliableMessage;
+import chat.dim.protocol.SymmetricKey;
+import chat.dim.protocol.group.GroupCommand;
 import chat.dim.protocol.group.ResetCommand;
 import chat.dim.type.Pair;
 

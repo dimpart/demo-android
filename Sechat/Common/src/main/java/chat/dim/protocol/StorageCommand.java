@@ -28,9 +28,6 @@ package chat.dim.protocol;
 import java.util.Arrays;
 import java.util.Map;
 
-import chat.dim.crypto.DecryptKey;
-import chat.dim.crypto.PrivateKey;
-import chat.dim.crypto.SymmetricKey;
 import chat.dim.dkd.cmd.BaseCommand;
 import chat.dim.format.Base64;
 import chat.dim.format.JSON;

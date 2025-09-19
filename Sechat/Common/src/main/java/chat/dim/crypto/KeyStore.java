@@ -35,6 +35,8 @@ import java.util.Map;
 
 import chat.dim.database.MsgKeyTable;
 import chat.dim.protocol.ID;
+import chat.dim.protocol.SymmetricAlgorithms;
+import chat.dim.protocol.SymmetricKey;
 
 public final class KeyStore implements MsgKeyTable {
 

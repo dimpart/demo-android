@@ -30,16 +30,16 @@ import java.util.Map;
 
 import chat.dim.Facebook;
 import chat.dim.Messenger;
-import chat.dim.crypto.PrivateKey;
-import chat.dim.crypto.SymmetricKey;
 import chat.dim.format.JSON;
 import chat.dim.format.UTF8;
 import chat.dim.mkm.User;
 import chat.dim.protocol.Content;
 import chat.dim.protocol.ID;
 import chat.dim.protocol.Password;
+import chat.dim.protocol.PrivateKey;
 import chat.dim.protocol.ReliableMessage;
 import chat.dim.protocol.StorageCommand;
+import chat.dim.protocol.SymmetricKey;
 
 public class StorageCommandProcessor extends BaseCommandProcessor {
 

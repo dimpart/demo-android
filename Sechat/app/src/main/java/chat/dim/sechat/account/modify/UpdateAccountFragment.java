@@ -26,12 +26,12 @@ import java.util.Map;
 
 import chat.dim.digest.MD5;
 import chat.dim.format.Hex;
-import chat.dim.format.PortableNetworkFile;
 import chat.dim.http.FileTransfer;
 import chat.dim.model.Configuration;
 import chat.dim.notification.NotificationCenter;
 import chat.dim.notification.NotificationNames;
 import chat.dim.protocol.ID;
+import chat.dim.protocol.PortableNetworkFile;
 import chat.dim.protocol.Visa;
 import chat.dim.sechat.R;
 import chat.dim.sechat.SechatApp;

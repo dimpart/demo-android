@@ -35,10 +35,10 @@ import chat.dim.protocol.Bulletin;
 import chat.dim.protocol.Command;
 import chat.dim.protocol.Content;
 import chat.dim.protocol.DocumentCommand;
-import chat.dim.protocol.GroupCommand;
 import chat.dim.protocol.ID;
 import chat.dim.protocol.InstantMessage;
 import chat.dim.protocol.ReliableMessage;
+import chat.dim.protocol.group.QueryCommand;
 import chat.dim.type.Duration;
 import chat.dim.type.Pair;
 import chat.dim.utils.FrequencyChecker;
@@ -71,7 +71,7 @@ public class SharedProcessor extends ClientMessageProcessor {
                     Log.info("querying group: " + group + ", " + sender);
                     Command cmd1 = DocumentCommand.query(group);
                     getMessenger().sendContent(cmd1, null, sender, 1);
-                    Command cmd2 = GroupCommand.query(group);
+                    Command cmd2 = QueryCommand.query(group);
                     getMessenger().sendContent(cmd2, null, sender, 1);
                 }
             }

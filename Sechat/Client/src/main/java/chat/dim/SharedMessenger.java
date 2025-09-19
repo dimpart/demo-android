@@ -29,8 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import chat.dim.compat.Compatible;
-import chat.dim.crypto.SymmetricAlgorithms;
-import chat.dim.crypto.SymmetricKey;
 import chat.dim.dbi.MessageDBI;
 import chat.dim.format.JSON;
 import chat.dim.format.UTF8;
@@ -51,6 +49,8 @@ import chat.dim.protocol.ReliableMessage;
 import chat.dim.protocol.ReportCommand;
 import chat.dim.protocol.SearchCommand;
 import chat.dim.protocol.StorageCommand;
+import chat.dim.protocol.SymmetricAlgorithms;
+import chat.dim.protocol.SymmetricKey;
 import chat.dim.protocol.Visa;
 import chat.dim.type.Pair;
 

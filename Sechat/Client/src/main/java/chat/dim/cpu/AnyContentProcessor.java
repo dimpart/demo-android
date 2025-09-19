@@ -29,14 +29,14 @@ import java.util.List;
 
 import chat.dim.Messenger;
 import chat.dim.Facebook;
+import chat.dim.protocol.AudioContent;
 import chat.dim.protocol.Content;
 import chat.dim.protocol.FileContent;
+import chat.dim.protocol.ImageContent;
 import chat.dim.protocol.PageContent;
 import chat.dim.protocol.ReliableMessage;
 import chat.dim.protocol.TextContent;
-import chat.dim.protocol.file.AudioContent;
-import chat.dim.protocol.file.ImageContent;
-import chat.dim.protocol.file.VideoContent;
+import chat.dim.protocol.VideoContent;
 
 public class AnyContentProcessor extends BaseContentProcessor {
 

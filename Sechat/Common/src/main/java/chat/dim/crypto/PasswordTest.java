@@ -28,13 +28,12 @@ package chat.dim.crypto;
 import java.util.HashMap;
 import java.util.Map;
 
-import chat.dim.compat.CommonExtensionLoader;
-import chat.dim.compat.CommonPluginLoader;
+import chat.dim.AppLibraryLoader;
 import chat.dim.format.Base64;
 import chat.dim.format.UTF8;
 import chat.dim.log.Log;
-import chat.dim.plugins.CryptoPluginLoader;
 import chat.dim.protocol.Password;
+import chat.dim.protocol.SymmetricKey;
 
 /**
  *  This is for generating symmetric key with a text string
@@ -48,9 +47,7 @@ public final class PasswordTest {
     */
    public static void main(String[] args) {
 
-      (new CommonExtensionLoader()).run();
-      (new CommonPluginLoader()).run();
-      (new CryptoPluginLoader()).run();
+      (new AppLibraryLoader()).run();
 
       Log.level = Log.DEBUG;
 

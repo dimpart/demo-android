@@ -39,7 +39,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import chat.dim.crypto.DecryptKey;
 import chat.dim.digest.MD5;
 import chat.dim.filesys.ExternalStorage;
 import chat.dim.filesys.LocalCache;
@@ -50,6 +49,7 @@ import chat.dim.log.Log;
 import chat.dim.notification.NotificationCenter;
 import chat.dim.notification.NotificationNames;
 import chat.dim.protocol.Address;
+import chat.dim.protocol.DecryptKey;
 import chat.dim.protocol.FileContent;
 import chat.dim.protocol.ID;
 

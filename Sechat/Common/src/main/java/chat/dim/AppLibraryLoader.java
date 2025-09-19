@@ -25,21 +25,21 @@
  */
 package chat.dim;
 
+import chat.dim.compat.ClientPluginLoader;
 import chat.dim.compat.LibraryLoader;
 import chat.dim.plugins.CryptoPluginLoader;
 
-class AppLibraryLoader extends LibraryLoader {
+public class AppLibraryLoader extends LibraryLoader {
 
    public AppLibraryLoader() {
-      super(null, null);
+      super(null, new ClientPluginLoader());
    }
 
    private final CryptoPluginLoader cryptoPluginLoader = new CryptoPluginLoader();
 
    @Override
-   public void run() {
-      super.run();
-      cryptoPluginLoader.run();
+   protected void load() {
+      super.load();
+      cryptoPluginLoader.load();
    }
-
 }

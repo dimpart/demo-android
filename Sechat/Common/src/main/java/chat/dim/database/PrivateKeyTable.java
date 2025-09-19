@@ -25,9 +25,9 @@
  */
 package chat.dim.database;
 
-import chat.dim.crypto.PrivateKey;
 import chat.dim.dbi.PrivateKeyDBI;
 import chat.dim.protocol.ID;
+import chat.dim.protocol.PrivateKey;
 
 public interface PrivateKeyTable extends PrivateKeyDBI {
 

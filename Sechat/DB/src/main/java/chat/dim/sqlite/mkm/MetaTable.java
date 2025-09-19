@@ -31,9 +31,7 @@ import android.database.Cursor;
 import java.util.HashMap;
 import java.util.Map;
 
-import chat.dim.crypto.PublicKey;
 import chat.dim.format.JSON;
-import chat.dim.format.TransportableData;
 import chat.dim.log.Log;
 import chat.dim.mkm.BaseMeta;
 import chat.dim.mkm.MetaUtils;
@@ -41,6 +39,8 @@ import chat.dim.protocol.Address;
 import chat.dim.protocol.ID;
 import chat.dim.protocol.Meta;
 import chat.dim.protocol.MetaVersion;
+import chat.dim.protocol.PublicKey;
+import chat.dim.protocol.TransportableData;
 import chat.dim.sqlite.DataTable;
 import chat.dim.sqlite.Database;
 
