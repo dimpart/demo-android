@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -30,7 +30,7 @@ dependencies {
 
     implementation project(':Common')
 
-    implementation group: 'chat.dim', name: 'Client', version: '0.5.1'
+    implementation group: 'chat.dim', name: 'Client', version: '0.5.2'
     implementation group: 'chat.dim', name: 'LNC', version: '0.2.1'
 
     implementation 'org.web3j:core:4.6.0-android'

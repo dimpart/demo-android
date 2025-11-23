@@ -30,7 +30,7 @@ dependencies {
 
     implementation project(':Common')
 
-    implementation group: 'chat.dim', name: 'Client', version: '0.5.1'
+    implementation group: 'chat.dim', name: 'Client', version: '0.5.2'
     implementation group: 'chat.dim', name: 'LNC', version: '0.2.1'
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
