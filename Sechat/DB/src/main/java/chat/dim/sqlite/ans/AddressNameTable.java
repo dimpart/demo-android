@@ -66,7 +66,7 @@ public final class AddressNameTable extends DataTable implements chat.dim.databa
         String[] selectionArgs = {alias};
         try (Cursor cursor = query(AddressNameDatabase.T_RECORD, columns, "alias=?", selectionArgs, null, null, null)) {
             if (cursor.moveToNext()) {
-                identifier = identifierFactory.parseIdentifier(cursor.getString(0));
+                identifier = identifierFactory.parseID(cursor.getString(0));
             }
         } catch (SQLiteCantOpenDatabaseException e) {
             e.printStackTrace();
