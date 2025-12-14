@@ -44,7 +44,7 @@ public class ClientProcessorCreator extends ClientContentProcessorCreator {
     protected AppCustomizedProcessor createCustomizedContentProcessor(Facebook facebook, Messenger messenger) {
         AppCustomizedProcessor cpu = super.createCustomizedContentProcessor(facebook, messenger);
         // 'chat.dim.sechat:drift_bottle'
-        cpu.setHandler(
+        cpu.setContentHandler(
                 AppContentHandler.APP_ID,
                 DriftBottleHandler.MOD_NAME,
                 new DriftBottleHandler(facebook, messenger)

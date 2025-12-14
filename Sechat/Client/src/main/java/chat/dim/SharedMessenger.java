@@ -166,8 +166,8 @@ public class SharedMessenger extends ClientMessenger {
         }
     }
 
-    public boolean postDocument(Document doc, Meta meta) {
-        Command content = DocumentCommand.response(doc.getIdentifier(), meta, doc);
+    public boolean postDocument(Document doc, Meta meta, ID entity) {
+        Command content = DocumentCommand.response(entity, meta, doc);
         return sendCommand(content, Departure.Priority.SLOWER.value);
     }
 

@@ -77,9 +77,9 @@ public class SharedDatabase implements AccountDBI, MessageDBI, SessionDBI, UserT
     //
 
     @Override
-    public boolean saveDocument(Document doc) {
+    public boolean saveDocument(Document doc, ID entity) {
         // TODO: must check old records before calling this
-        boolean ok = documentTable.saveDocument(doc);
+        boolean ok = documentTable.saveDocument(doc, entity);
         if (ok) {
             Map<String, Object> info = doc.toMap();
             NotificationCenter nc = NotificationCenter.getInstance();

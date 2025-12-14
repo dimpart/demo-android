@@ -55,7 +55,7 @@ public class AccountViewModel extends UserViewModel {
         }
         visa.sign(sKey);
         // save signed visa document
-        if (!archivist.saveDocument(visa)) {
+        if (!archivist.saveDocument(visa, identifier)) {
             return;
         }
         if (broadcast) {
@@ -63,7 +63,7 @@ public class AccountViewModel extends UserViewModel {
             SharedMessenger messenger = shared.messenger;
             // upload to server
             Meta meta = facebook.getMeta(identifier);
-            messenger.postDocument(visa, meta);
+            messenger.postDocument(visa, meta, identifier);
             // broadcast to all contacts
             messenger.broadcastVisa(visa);
         }
@@ -257,7 +257,7 @@ public class AccountViewModel extends UserViewModel {
             if (visa.sign(privateKey) == null) {
                 return null;
             }
-            if (!archivist.saveDocument(visa)) {
+            if (!archivist.saveDocument(visa, identifier)) {
                 return null;
             }
         }

@@ -191,7 +191,7 @@ public class RegisterFragment extends Fragment {
             SignKey sKey = facebook.getPrivateKeyForVisaSignature(user.getIdentifier());
             assert sKey != null : "failed to get private key: " + user.getIdentifier();
             visa.sign(sKey);
-            archivist.saveDocument(visa);
+            archivist.saveDocument(visa, uid);
         }
 
         // 3. set current user
@@ -200,7 +200,7 @@ public class RegisterFragment extends Fragment {
         // 4. upload meta & visa to DIM station
         if (ok) {
             SharedMessenger messenger = shared.messenger;
-            messenger.postDocument(visa, meta);
+            messenger.postDocument(visa, meta, uid);
         }
 
         // 5. show main activity

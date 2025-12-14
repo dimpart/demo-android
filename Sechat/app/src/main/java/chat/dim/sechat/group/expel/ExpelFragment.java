@@ -79,11 +79,13 @@ public class ExpelFragment extends ListFragment<CandidateViewAdapter, MemberList
         if (selected.size() == 0) {
             return;
         }
+        ID group = identifier;
+        assert group.isGroup() : "group ID error: " + group;
 
         // save group name
         GlobalVariable shared = GlobalVariable.getInstance();
         SharedFacebook facebook = shared.facebook;
-        String oldName = facebook.getName(identifier);
+        String oldName = facebook.getName(group);
         String newName = groupName.getText().toString();
         if (oldName == null || !oldName.equals(newName)) {
             if (newName.length() > 0) {
@@ -91,12 +93,13 @@ public class ExpelFragment extends ListFragment<CandidateViewAdapter, MemberList
                 assert user != null : "failed to get current user";
                 SignKey sKey = facebook.getPrivateKeyForVisaSignature(user.getIdentifier());
                 assert sKey != null : "failed to get private key: " + user.getIdentifier();
-                Bulletin bulletin = new BaseBulletin(identifier);
+                Bulletin bulletin = new BaseBulletin();
+                bulletin.setString("did", group);
                 bulletin.setName(newName);
                 bulletin.sign(sKey);
                 Archivist archivist = facebook.getArchivist();
                 if (archivist != null) {
-                    archivist.saveDocument(bulletin);
+                    archivist.saveDocument(bulletin, group);
                 }
             }
         }
@@ -104,7 +107,7 @@ public class ExpelFragment extends ListFragment<CandidateViewAdapter, MemberList
         // expel group member(s)
         List<ID> members = new ArrayList<>(selected);
         SharedGroupManager manager = SharedGroupManager.getInstance();
-        if (manager.expelGroupMembers(members, identifier)) {
+        if (manager.expelGroupMembers(members, group)) {
             Alert.tips(getContext(), R.string.group_members_updated);
             close();
         } else {

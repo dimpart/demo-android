@@ -102,22 +102,22 @@ public final class DocumentTable extends DataTable implements chat.dim.database.
     }
 
     @Override
-    public boolean saveDocument(Document doc) {
+    public boolean saveDocument(Document doc, ID entity) {
         // 0. check valid
         if (!doc.isValid()) {
             Log.error("document not valid: " + doc);
             return false;
         }
-        ID identifier = doc.getIdentifier();
+        ID did = ID.parse(doc.get("did"));
         String type = DocumentUtils.getDocumentType(doc);
         if (type == null) {
             type = "";
         }
         boolean exists = false;
         // check old documents
-        List<Document> documents = getDocuments(identifier);
+        List<Document> documents = getDocuments(entity);
         for (Document item : documents) {
-            if (identifier.equals(item.getIdentifier()) &&
+            if (did.equals(item.get("did")) &&
                     type.equals(DocumentUtils.getDocumentType(item))) {
                 // old record found, update it
                 exists = true;
@@ -126,27 +126,28 @@ public final class DocumentTable extends DataTable implements chat.dim.database.
         }
         boolean saved;
         if (exists) {
-            saved = updateDocument(doc);
+            saved = updateDocument(doc, entity);
         } else {
-            saved = insertDocument(doc);
+            saved = insertDocument(doc, entity);
         }
         if (saved) {
-            Log.info("-------- entity document saved: " + identifier);
+            Log.info("-------- entity document saved: " + did);
             // clear to reload
-            docsTable.remove(identifier.toString());
+            docsTable.remove(entity.toString());
         } else {
-            Log.error("failed to save document: " + identifier);
+            Log.error("failed to save document: " + did);
         }
         return saved;
     }
 
-    protected boolean updateDocument(Document doc) {
-        ID identifier = doc.getIdentifier();
+    protected boolean updateDocument(Document doc, ID entity) {
+        ID did = ID.parse(doc.get("did"));
+        assert did.getAddress().equals(entity.getAddress()) : "document ID not matched: " + entity + ", " + doc;
         String type = DocumentUtils.getDocumentType(doc);
         String data = doc.getString("data", "");
         String base64 = doc.getString("signature", "");
         // conditions
-        String[] whereArgs = {identifier.toString(), type};
+        String[] whereArgs = {did.toString(), type};
         // fill values
         ContentValues values = new ContentValues();
         values.put("data", data);
@@ -154,14 +155,15 @@ public final class DocumentTable extends DataTable implements chat.dim.database.
         return update(EntityDatabase.T_DOCUMENT, values, "did=? AND type=?", whereArgs) > 0;
     }
 
-    protected boolean insertDocument(Document doc) {
-        ID identifier = doc.getIdentifier();
+    protected boolean insertDocument(Document doc, ID entity) {
+        ID did = ID.parse(doc.get("did"));
+        assert did.getAddress().equals(entity.getAddress()) : "document ID not matched: " + entity + ", " + doc;
         String type = DocumentUtils.getDocumentType(doc);
         String data = doc.getString("data", "");
         String base64 = doc.getString("signature", "");
         // new values
         ContentValues values = new ContentValues();
-        values.put("did", identifier.toString());
+        values.put("did", did.toString());
         values.put("type", type);
         values.put("data", data);
         values.put("signature", Base64.decode(base64));
