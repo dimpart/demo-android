@@ -152,7 +152,7 @@ public class SharedMessenger extends ClientMessenger {
             // TODO: save the message content in waiting queue
             throw new NullPointerException("login first");
         }
-        ID identifier = visa.getIdentifier();
+        ID identifier = ID.parse(visa.get("did"));
         if (!user.getIdentifier().equals(identifier)) {
             throw new IllegalArgumentException("visa document error: " + visa);
         }

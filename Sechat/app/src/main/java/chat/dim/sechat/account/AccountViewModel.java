@@ -39,7 +39,7 @@ public class AccountViewModel extends UserViewModel {
 
     public void updateVisa(Visa visa, boolean broadcast) {
         ID identifier = getIdentifier();
-        if (identifier == null || !identifier.equals(visa.getIdentifier())) {
+        if (identifier == null || !identifier.equals(visa.get("did"))) {
             return;
         }
         SharedFacebook facebook = getFacebook();
@@ -247,7 +247,8 @@ public class AccountViewModel extends UserViewModel {
 
         // generate visa
         if (nickname != null || msgKey != null) {
-            BaseVisa visa = new BaseVisa(identifier);
+            BaseVisa visa = new BaseVisa();
+            visa.setString("did", identifier);
             if (nickname != null && nickname.length() > 0) {
                 visa.setName(nickname);
             }

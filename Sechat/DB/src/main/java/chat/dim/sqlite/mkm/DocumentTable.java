@@ -87,8 +87,9 @@ public final class DocumentTable extends DataTable implements chat.dim.database.
                     type = cursor.getString(0);
                     data = cursor.getString(1);
                     signature = cursor.getBlob(2);
-                    doc = Document.create(type, entity, data, TransportableData.create(signature));
+                    doc = Document.create(type, data, TransportableData.create(signature));
                     assert doc != null : "failed to create document: " + type + ", " + entity;
+                    doc.setString("did", entity);
                     documents.add(doc);
                 }
             } catch (SQLiteCantOpenDatabaseException e) {
