@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
+import java.util.List;
 import java.util.Map;
 
 import chat.dim.ClientFacebook;
@@ -18,6 +19,7 @@ import chat.dim.notification.NotificationCenter;
 import chat.dim.notification.NotificationNames;
 import chat.dim.notification.Observer;
 import chat.dim.protocol.Content;
+import chat.dim.protocol.Document;
 import chat.dim.protocol.ID;
 import chat.dim.protocol.SearchCommand;
 import chat.dim.sechat.R;
@@ -91,7 +93,8 @@ public class SearchFragment extends ListFragment<SearchViewAdapter, DummyContent
 
         // check visa.key
         ID bot = ClientFacebook.ans.identifier("archivist");
-        if (bot == null || shared.facebook.getPublicKeyForEncryption(bot) == null) {
+        List<Document> documents = bot == null ? null : shared.facebook.getDocuments(bot);
+        if (documents == null || documents.isEmpty()) {
             // TODO: query station with 'ans'/'document' command for bot ID
             bot = ID.parse("archivist@anywhere");
         }

@@ -41,6 +41,7 @@ import chat.dim.notification.Observer;
 import chat.dim.port.Departure;
 import chat.dim.protocol.BlockCommand;
 import chat.dim.protocol.Content;
+import chat.dim.protocol.Document;
 import chat.dim.protocol.ForwardContent;
 import chat.dim.protocol.HandshakeCommand;
 import chat.dim.protocol.ID;
@@ -89,7 +90,8 @@ public class MessageDataSource implements Observer {
             ID entity = ID.parse(info.get("ID"));
             if (entity.isUser()) {
                 // check user
-                if (facebook.getPublicKeyForEncryption(entity) == null) {
+                List<Document> documents = facebook.getDocuments(entity);
+                if (documents == null || documents.isEmpty()) {
                     Log.error("user not ready yet: " + entity);
                     return;
                 }

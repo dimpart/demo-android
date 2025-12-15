@@ -183,11 +183,12 @@ public class SharedMessenger extends ClientMessenger {
         data = password.encrypt(data, content.toMap());
         // 3. encrypt key
         byte[] key = UTF8.encode(JSON.encode(password));
-        key = user.encrypt(key);
+        // FIXME: define a password for current user
+        //key = user.encrypt(key);
         // 4. pack 'storage' command
         content.setData(data);
         content.setKey(key);
-        sendCommand(content, Departure.Priority.SLOWER.value);
+        //sendCommand(content, Departure.Priority.SLOWER.value);
     }
 
     public void queryContacts() {
