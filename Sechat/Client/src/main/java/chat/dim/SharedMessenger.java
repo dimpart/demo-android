@@ -32,6 +32,7 @@ import chat.dim.compat.Compatible;
 import chat.dim.dbi.MessageDBI;
 import chat.dim.format.JSON;
 import chat.dim.format.UTF8;
+import chat.dim.mkm.DocumentUtils;
 import chat.dim.mkm.Station;
 import chat.dim.mkm.User;
 import chat.dim.mtp.MsgUtils;
@@ -41,7 +42,6 @@ import chat.dim.protocol.AnsCommand;
 import chat.dim.protocol.Command;
 import chat.dim.protocol.Content;
 import chat.dim.protocol.Document;
-import chat.dim.protocol.DocumentCommand;
 import chat.dim.protocol.ID;
 import chat.dim.protocol.InstantMessage;
 import chat.dim.protocol.Meta;
@@ -159,7 +159,7 @@ public class SharedMessenger extends ClientMessenger {
         // pack and send user document to every contact
         List<ID> contacts = user.getContacts();
         if (contacts != null && contacts.size() > 0) {
-            Content content = DocumentCommand.response(identifier, visa);
+            Content content = DocumentUtils.response(identifier, null, visa);
             for (ID contact : contacts) {
                 sendContent(contact, content, 1);
             }
@@ -167,7 +167,7 @@ public class SharedMessenger extends ClientMessenger {
     }
 
     public boolean postDocument(Document doc, Meta meta, ID entity) {
-        Command content = DocumentCommand.response(entity, meta, doc);
+        Command content = DocumentUtils.response(entity, meta, doc);
         return sendCommand(content, Departure.Priority.SLOWER.value);
     }
 

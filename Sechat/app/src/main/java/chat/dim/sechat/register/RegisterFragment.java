@@ -26,6 +26,7 @@ import chat.dim.core.Archivist;
 import chat.dim.digest.MD5;
 import chat.dim.format.Hex;
 import chat.dim.http.FileTransfer;
+import chat.dim.mkm.DocumentUtils;
 import chat.dim.mkm.User;
 import chat.dim.model.Configuration;
 import chat.dim.protocol.ID;
@@ -172,7 +173,7 @@ public class RegisterFragment extends Fragment {
         }
         User user = facebook.getUser(uid);
         Meta meta = user.getMeta();
-        Visa visa = user.getVisa();
+        Visa visa = DocumentUtils.lastVisa(user.getDocuments());
 
         boolean ok = true;
 

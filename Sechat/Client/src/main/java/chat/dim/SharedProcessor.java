@@ -69,7 +69,7 @@ public class SharedProcessor extends ClientMessageProcessor {
                 Bulletin doc = getFacebook().getBulletin(group);
                 if (doc == null && groupQueries.isExpired(direction, null, false)) {
                     Log.info("querying group: " + group + ", " + sender);
-                    Command cmd1 = DocumentCommand.query(group);
+                    Command cmd1 = DocumentCommand.query(group, null);
                     getMessenger().sendContent(cmd1, null, sender, 1);
                     Command cmd2 = QueryCommand.query(group);
                     getMessenger().sendContent(cmd2, null, sender, 1);
