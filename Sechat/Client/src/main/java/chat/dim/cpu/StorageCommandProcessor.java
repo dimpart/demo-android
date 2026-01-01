@@ -30,8 +30,8 @@ import java.util.Map;
 
 import chat.dim.Facebook;
 import chat.dim.Messenger;
-import chat.dim.crypto.EncryptedData;
-import chat.dim.crypto.UserEncryptedData;
+import chat.dim.crypto.EncryptedBundle;
+import chat.dim.crypto.UserEncryptedBundle;
 import chat.dim.format.JSON;
 import chat.dim.format.UTF8;
 import chat.dim.mkm.User;
@@ -79,9 +79,9 @@ public class StorageCommandProcessor extends BaseCommandProcessor {
         // 3. decrypt key
         Facebook facebook = getFacebook();
         User user = facebook.getUser(identifier);
-        EncryptedData data = new UserEncryptedData();
-        data.put("*", key);
-        key = user.decrypt(data);
+        EncryptedBundle bundle = new UserEncryptedBundle();
+        bundle.put("*", key);
+        key = user.decryptBundle(bundle);
         if (key == null) {
             throw new NullPointerException("failed to decrypt key: " + content);
         }

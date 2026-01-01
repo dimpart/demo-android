@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import chat.dim.compat.Compatible;
+import chat.dim.crypto.EncryptedBundle;
 import chat.dim.dbi.MessageDBI;
 import chat.dim.format.JSON;
 import chat.dim.format.UTF8;
@@ -183,8 +184,9 @@ public class SharedMessenger extends ClientMessenger {
         data = password.encrypt(data, content.toMap());
         // 3. encrypt key
         byte[] key = UTF8.encode(JSON.encode(password));
-        // FIXME: define a password for current user
-        //key = user.encrypt(key);
+        EncryptedBundle bundle = user.encryptBundle(key);
+        // FIXME: for each key data in results
+        key = bundle.values().iterator().next();
         // 4. pack 'storage' command
         content.setData(data);
         content.setKey(key);
