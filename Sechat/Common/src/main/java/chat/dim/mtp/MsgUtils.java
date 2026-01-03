@@ -34,17 +34,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import chat.dim.data.Converter;
 import chat.dim.dmtp.protocol.Message;
 import chat.dim.format.Base64;
 import chat.dim.format.JSON;
 import chat.dim.format.UTF8;
-import chat.dim.protocol.ContentType;
 import chat.dim.protocol.ID;
 import chat.dim.protocol.ReliableMessage;
 import chat.dim.tlv.values.RawValue;
 import chat.dim.tlv.values.StringValue;
 import chat.dim.type.ByteArray;
-import chat.dim.type.Converter;
 import chat.dim.type.Data;
 import chat.dim.type.Dictionary;
 import chat.dim.type.IntegerData;

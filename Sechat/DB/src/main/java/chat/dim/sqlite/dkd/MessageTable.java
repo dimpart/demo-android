@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import chat.dim.data.Converter;
 import chat.dim.format.JSON;
 import chat.dim.log.Log;
 import chat.dim.protocol.Content;
@@ -47,7 +48,6 @@ import chat.dim.protocol.InstantMessage;
 import chat.dim.protocol.ReceiptCommand;
 import chat.dim.sqlite.DataTable;
 import chat.dim.sqlite.Database;
-import chat.dim.type.Converter;
 
 public final class MessageTable extends DataTable implements chat.dim.database.MessageTable {
 

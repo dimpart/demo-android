@@ -7,6 +7,7 @@ import chat.dim.GlobalVariable;
 import chat.dim.SharedFacebook;
 import chat.dim.SharedMessenger;
 import chat.dim.core.Archivist;
+import chat.dim.data.Converter;
 import chat.dim.format.Hex;
 import chat.dim.format.JSON;
 import chat.dim.mkm.BaseVisa;
@@ -21,7 +22,6 @@ import chat.dim.protocol.PrivateKey;
 import chat.dim.protocol.SignKey;
 import chat.dim.protocol.Visa;
 import chat.dim.sechat.model.UserViewModel;
-import chat.dim.type.Converter;
 
 public class AccountViewModel extends UserViewModel {
 
