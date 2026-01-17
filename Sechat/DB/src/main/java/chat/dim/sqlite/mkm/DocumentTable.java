@@ -148,7 +148,8 @@ public final class DocumentTable extends DataTable implements chat.dim.database.
         String data = doc.getString("data", "");
         String base64 = doc.getString("signature", "");
         // conditions
-        String[] whereArgs = {did.toString(), type};
+        // TODO: add field 'vid' for terminal
+        String[] whereArgs = {entity.toString(), type};
         // fill values
         ContentValues values = new ContentValues();
         values.put("data", data);
@@ -164,7 +165,8 @@ public final class DocumentTable extends DataTable implements chat.dim.database.
         String base64 = doc.getString("signature", "");
         // new values
         ContentValues values = new ContentValues();
-        values.put("did", did.toString());
+        // TODO: add field 'vid' for terminal
+        values.put("did", entity.toString());
         values.put("type", type);
         values.put("data", data);
         values.put("signature", Base64.decode(base64));
