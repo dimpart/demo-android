@@ -485,7 +485,9 @@ public final class MessageTable extends DataTable implements chat.dim.database.M
             if (cursor.moveToNext()) {
                 // record exists
                 Log.info("drop duplicated msg: " + iMsg.getSender() + " -> " + iMsg.getReceiver());
-                return false;
+                //return false;
+                removeMessage(iMsg, entity);
+                System.out.println("update message: " + iMsg);
             }
         } catch (SQLiteCantOpenDatabaseException e) {
             e.printStackTrace();
@@ -530,7 +532,7 @@ public final class MessageTable extends DataTable implements chat.dim.database.M
             signature = "";
         }
         String[] whereArgs = {entity.toString(), sender.toString(), (sn > 0 ? ""+sn : "9527"), (signature.length() > 0 ? signature : "MOKY")};
-        delete(MessageDatabase.T_TRACE, "cid=? AND sender=? AND (sn=? OR signature=?)", whereArgs);
+        delete(MessageDatabase.T_TRACE, "cid=? AND cid<>? AND (sn=? OR signature=?)", whereArgs);
         if (delete(MessageDatabase.T_MESSAGE, "cid=? AND sender=? AND (sn=? OR signature=?)", whereArgs) <= 0) {
             return false;
         }

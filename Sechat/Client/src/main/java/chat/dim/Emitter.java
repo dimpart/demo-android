@@ -223,11 +223,13 @@ public class Emitter implements Observer {
             return;
         }
         // 2. save instant message without file data
+        byte[] encrypted = password.encrypt(data, content.toMap());
+        filename = FileTransfer.getFilename(encrypted, filename);
+        content.setFilename(filename);
+        content.setPassword(password);
         content.setData(null);
         saveInstantMessage(iMsg);
         // 3. add upload task with encrypted data
-        byte[] encrypted = password.encrypt(data, iMsg.toMap());
-        filename = FileTransfer.getFilename(encrypted, filename);
         ID sender = iMsg.getSender();
         URL url = getFileTransfer().uploadEncryptData(encrypted, filename, sender);
         if (url == null) {
@@ -267,10 +269,12 @@ public class Emitter implements Observer {
         String filename = Hex.encode(MD5.digest(jpeg)) + ".jpeg";
         TransportableData big = TransportableData.create(jpeg);
         TransportableData small = TransportableData.create(thumbnail);
+        PortableNetworkFile pnf = PortableNetworkFile.create(small, "thumbnail.jpeg");
+        pnf.put("mime-type", "image/jpeg");
         ImageContent content = FileContent.image(big, filename, null, null);
         // add image data length & thumbnail into message content
         content.put("length", jpeg.length);
-        content.setThumbnail(PortableNetworkFile.create(small, "thumbnail.jpeg"));
+        content.setThumbnail(pnf);
         sendContent(content, receiver);
     }
 

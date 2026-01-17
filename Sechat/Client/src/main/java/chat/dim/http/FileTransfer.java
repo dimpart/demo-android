@@ -65,6 +65,7 @@ public enum FileTransfer implements UploadDelegate, DownloadDelegate {
     public String api = "https://sechat.dim.chat/{ID}/upload?md5={MD5}&salt={SALT}";
     // upload key (hex)
     public String secret = "12345678";
+    public String enigma = "123456";
 
     private final HTTPClient http;
 
@@ -120,8 +121,9 @@ public enum FileTransfer implements UploadDelegate, DownloadDelegate {
 
     private URL upload(byte[] data, String path, String var, ID sender) throws IOException {
         URL url = new URL(api);
+        Log.info("secret: " + secret);
         byte[] key = Hex.decode(secret);
-        return http.upload(url, key, data, path, var, sender, this);
+        return http.upload(url, enigma, key, data, path, var, sender, this);
     }
 
     private static boolean isEncoded(String filename, String ext) {

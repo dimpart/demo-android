@@ -186,7 +186,7 @@ public class SharedMessenger extends ClientMessenger {
         byte[] key = UTF8.encode(JSON.encode(password));
         EncryptedBundle bundle = user.encryptBundle(key);
         // FIXME: for each key data in results
-        key = bundle.values().iterator().next();
+        key = bundle.toMap().values().iterator().next();
         // 4. pack 'storage' command
         content.setData(data);
         content.setKey(key);
