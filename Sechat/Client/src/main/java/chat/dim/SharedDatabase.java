@@ -161,16 +161,6 @@ public class SharedDatabase implements AccountDBI, MessageDBI, SessionDBI, UserT
     }
 
     @Override
-    public List<ID> getAssistants(ID group) {
-        return groupTable.getAssistants(group);
-    }
-
-    @Override
-    public boolean saveAssistants(List<ID> bots, ID group) {
-        return groupTable.saveAssistants(bots, group);
-    }
-
-    @Override
     public List<ID> getAdministrators(ID group) {
         return groupTable.getAdministrators(group);
     }
