@@ -38,8 +38,8 @@ import chat.dim.dbi.AccountDBI;
 import chat.dim.http.FileTransfer;
 import chat.dim.mkm.User;
 import chat.dim.protocol.ID;
-import chat.dim.protocol.PortableNetworkFile;
 import chat.dim.protocol.PrivateKey;
+import chat.dim.protocol.TransportableFile;
 import chat.dim.protocol.Visa;
 import chat.dim.type.Pair;
 
@@ -63,7 +63,7 @@ public final class SharedFacebook extends ClientFacebook {
      * @return cache path & remote URL
      */
     public Pair<String, URL> getAvatar(ID user) {
-        PortableNetworkFile avatar = null;
+        TransportableFile avatar = null;
         Visa doc = getVisa(user);
         if (doc != null) {
             avatar = doc.getAvatar();

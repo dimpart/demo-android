@@ -35,11 +35,11 @@ import java.util.List;
 import java.util.Map;
 
 import chat.dim.format.Base64;
+import chat.dim.format.Base64Data;
 import chat.dim.log.Log;
 import chat.dim.mkm.DocumentUtils;
 import chat.dim.protocol.Document;
 import chat.dim.protocol.ID;
-import chat.dim.protocol.TransportableData;
 import chat.dim.sqlite.DataTable;
 import chat.dim.sqlite.Database;
 
@@ -87,7 +87,7 @@ public final class DocumentTable extends DataTable implements chat.dim.database.
                     type = cursor.getString(0);
                     data = cursor.getString(1);
                     signature = cursor.getBlob(2);
-                    doc = Document.create(type, data, TransportableData.create(signature));
+                    doc = Document.create(type, data, Base64Data.create(signature));
                     assert doc != null : "failed to create document: " + type + ", " + entity;
                     doc.setString("did", entity);
                     documents.add(doc);

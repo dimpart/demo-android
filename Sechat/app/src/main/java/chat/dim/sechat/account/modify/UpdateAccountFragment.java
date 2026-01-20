@@ -31,7 +31,7 @@ import chat.dim.model.Configuration;
 import chat.dim.notification.NotificationCenter;
 import chat.dim.notification.NotificationNames;
 import chat.dim.protocol.ID;
-import chat.dim.protocol.PortableNetworkFile;
+import chat.dim.protocol.TransportableFile;
 import chat.dim.protocol.Visa;
 import chat.dim.sechat.R;
 import chat.dim.sechat.SechatApp;
@@ -152,7 +152,7 @@ public class UpdateAccountFragment extends Fragment implements DialogInterface.O
                 // waiting for avatar uploaded
                 ok = false;
             } else {
-                visa.setAvatar(PortableNetworkFile.parse(url.toString()));
+                visa.setAvatar(TransportableFile.parse(url.toString()));
             }
         }
 

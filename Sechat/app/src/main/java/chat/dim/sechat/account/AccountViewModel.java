@@ -82,7 +82,7 @@ public class AccountViewModel extends UserViewModel {
 
         String pem;
         if (sKey.getAlgorithm().equals(AsymmetricAlgorithms.ECC)) {
-            byte[] data = sKey.getData();
+            byte[] data = sKey.getData().getBytes();
             if (data == null) {
                 return null;
             }

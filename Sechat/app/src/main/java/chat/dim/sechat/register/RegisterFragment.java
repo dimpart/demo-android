@@ -31,8 +31,8 @@ import chat.dim.mkm.User;
 import chat.dim.model.Configuration;
 import chat.dim.protocol.ID;
 import chat.dim.protocol.Meta;
-import chat.dim.protocol.PortableNetworkFile;
 import chat.dim.protocol.SignKey;
+import chat.dim.protocol.TransportableFile;
 import chat.dim.protocol.Visa;
 import chat.dim.sechat.R;
 import chat.dim.sechat.account.AccountViewModel;
@@ -187,7 +187,7 @@ public class RegisterFragment extends Fragment {
                 // waiting for avatar uploaded
                 ok = false;
             } else {
-                visa.setAvatar(PortableNetworkFile.parse(url.toString()));
+                visa.setAvatar(TransportableFile.parse(url.toString()));
             }
             SignKey sKey = facebook.getPrivateKeyForVisaSignature(user.getIdentifier());
             assert sKey != null : "failed to get private key: " + user.getIdentifier();

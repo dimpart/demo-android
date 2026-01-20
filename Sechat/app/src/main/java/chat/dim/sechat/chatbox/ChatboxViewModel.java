@@ -19,7 +19,7 @@ import chat.dim.protocol.FileContent;
 import chat.dim.protocol.ID;
 import chat.dim.protocol.ImageContent;
 import chat.dim.protocol.InstantMessage;
-import chat.dim.protocol.PortableNetworkFile;
+import chat.dim.protocol.TransportableFile;
 import chat.dim.sechat.SechatApp;
 import chat.dim.sechat.model.EntityViewModel;
 import chat.dim.ui.image.Images;
@@ -92,11 +92,11 @@ public class ChatboxViewModel extends EntityViewModel {
     }
 
     static Bitmap getThumbnail(ImageContent content) {
-        PortableNetworkFile pnf = content.getThumbnail();
+        TransportableFile pnf = content.getThumbnail();
         if (pnf == null) {
             return null;
         }
-        byte[] thumbnail = pnf.getData();
+        byte[] thumbnail = pnf.getData().getBytes();
         // TODO: save thumbnail data into local storage and remove from message content
 
         Bitmap image = BitmapFactory.decodeByteArray(thumbnail, 0, thumbnail.length);

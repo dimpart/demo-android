@@ -36,6 +36,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import chat.dim.digest.MD5;
 import chat.dim.dkd.BaseTextContent;
+import chat.dim.format.Base64Data;
+import chat.dim.format.EmbedData;
 import chat.dim.format.Hex;
 import chat.dim.group.SharedGroupManager;
 import chat.dim.http.FileTransfer;
@@ -53,11 +55,11 @@ import chat.dim.protocol.FileContent;
 import chat.dim.protocol.ID;
 import chat.dim.protocol.ImageContent;
 import chat.dim.protocol.InstantMessage;
-import chat.dim.protocol.PortableNetworkFile;
 import chat.dim.protocol.ReliableMessage;
 import chat.dim.protocol.SymmetricKey;
 import chat.dim.protocol.TextContent;
 import chat.dim.protocol.TransportableData;
+import chat.dim.protocol.TransportableFile;
 import chat.dim.type.Pair;
 
 public class Emitter implements Observer {
@@ -215,7 +217,7 @@ public class Emitter implements Observer {
     public void sendFileContentMessage(InstantMessage iMsg, SymmetricKey password) throws IOException {
         FileContent content = (FileContent) iMsg.getContent();
         // 1. save origin file data
-        byte[] data = content.getData();
+        byte[] data = content.getData().getBytes();
         String filename = content.getFilename();
         int len = FileTransfer.cacheFileData(data, filename);
         if (len != data.length) {
@@ -267,15 +269,17 @@ public class Emitter implements Observer {
     public void sendImage(byte[] jpeg, byte[] thumbnail, ID receiver) throws IOException {
         assert jpeg != null && jpeg.length > 0 : "image data empty";
         String filename = Hex.encode(MD5.digest(jpeg)) + ".jpeg";
-        TransportableData big = TransportableData.create(jpeg);
-        TransportableData small = TransportableData.create(thumbnail);
-        PortableNetworkFile pnf = PortableNetworkFile.create(small, "thumbnail.jpeg");
-        pnf.put("mime-type", "image/jpeg");
-        ImageContent content = FileContent.image(big, filename, null, null);
+        TransportableData picture = Base64Data.create(jpeg);
+        TransportableFile small = createSmallImage(thumbnail);
+        ImageContent content = FileContent.image(picture, filename, null, null);
         // add image data length & thumbnail into message content
         content.put("length", jpeg.length);
-        content.setThumbnail(pnf);
+        content.setThumbnail(small);
         sendContent(content, receiver);
+    }
+    private TransportableFile createSmallImage(byte[] thumbnail) {
+        TransportableData img = EmbedData.createImage(thumbnail);
+        return TransportableFile.create(img, "thumbnail.jpeg");
     }
 
     /**
@@ -289,8 +293,8 @@ public class Emitter implements Observer {
     public void sendVoice(byte[] mp4, float duration, ID receiver) throws IOException {
         assert mp4 != null && mp4.length > 0 : "voice data empty";
         String filename = Hex.encode(MD5.digest(mp4)) + ".mp4";
-        TransportableData ted = TransportableData.create(mp4);
-        AudioContent content = FileContent.audio(ted, filename, null, null);
+        TransportableData voice = Base64Data.create(mp4);
+        AudioContent content = FileContent.audio(voice, filename, null, null);
         // add voice data length & duration into message content
         content.put("length", mp4.length);
         content.put("duration", duration);

@@ -41,7 +41,8 @@ public class ProfileViewModel extends UserViewModel {
             if (sKey == null) {
                 return WalletFactory.getWallet(name, address);
             } else {
-                Credentials account = Credentials.create(Hex.encode(sKey.getData()));
+                byte[] data = sKey.getData().getBytes();
+                Credentials account = Credentials.create(Hex.encode(data));
                 return WalletFactory.getWallet(name, account);
             }
         }

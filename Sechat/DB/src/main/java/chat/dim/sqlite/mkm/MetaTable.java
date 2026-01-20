@@ -31,6 +31,7 @@ import android.database.Cursor;
 import java.util.HashMap;
 import java.util.Map;
 
+import chat.dim.format.Base64Data;
 import chat.dim.format.JSON;
 import chat.dim.log.Log;
 import chat.dim.mkm.BaseMeta;
@@ -40,7 +41,6 @@ import chat.dim.protocol.ID;
 import chat.dim.protocol.Meta;
 import chat.dim.protocol.MetaVersion;
 import chat.dim.protocol.PublicKey;
-import chat.dim.protocol.TransportableData;
 import chat.dim.sqlite.DataTable;
 import chat.dim.sqlite.Database;
 
@@ -102,7 +102,7 @@ public final class MetaTable extends DataTable implements chat.dim.database.Meta
         byte[] fingerprint;
         if (MetaVersion.hasSeed(type)) {
             seed = meta.getSeed();
-            fingerprint = meta.getFingerprint();
+            fingerprint = meta.getFingerprint().getBytes();
         } else {
             seed = "";
             fingerprint = null;
@@ -141,8 +141,7 @@ public final class MetaTable extends DataTable implements chat.dim.database.Meta
                     if (MetaVersion.hasSeed(type)) {
                         String seed = cursor.getString(2);
                         byte[] fingerprint = cursor.getBlob(3);
-                        TransportableData ted = TransportableData.create(fingerprint);
-                        meta = Meta.create(Integer.toString(type), key, seed, ted);
+                        meta = Meta.create(Integer.toString(type), key, seed, Base64Data.create(fingerprint));
                     } else {
                         meta = Meta.create(Integer.toString(type), key, null, null);
                     }
