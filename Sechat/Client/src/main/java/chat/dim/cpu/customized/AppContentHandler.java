@@ -25,8 +25,6 @@
  */
 package chat.dim.cpu.customized;
 
-import chat.dim.Facebook;
-import chat.dim.Messenger;
 import chat.dim.cpu.app.BaseCustomizedHandler;
 import chat.dim.dkd.app.AppCustomizedContent;
 import chat.dim.protocol.ContentType;
@@ -40,8 +38,8 @@ public abstract class AppContentHandler extends BaseCustomizedHandler {
     // Application ID for customized content
     public static final String APP_ID = "chat.dim.sechat";
 
-    protected AppContentHandler(Facebook facebook, Messenger messenger) {
-        super(facebook, messenger);
+    protected AppContentHandler() {
+        super();
     }
 
     /**

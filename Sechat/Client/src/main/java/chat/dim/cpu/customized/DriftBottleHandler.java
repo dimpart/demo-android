@@ -27,7 +27,6 @@ package chat.dim.cpu.customized;
 
 import java.util.List;
 
-import chat.dim.Facebook;
 import chat.dim.Messenger;
 import chat.dim.protocol.Content;
 import chat.dim.protocol.CustomizedContent;
@@ -48,12 +47,14 @@ public class DriftBottleHandler extends AppContentHandler {
     public static final String ACT_THROW = "throw";
     public static final String ACT_CATCH = "catch";
 
-    public DriftBottleHandler(Facebook facebook, Messenger messenger) {
-        super(facebook, messenger);
+    public DriftBottleHandler() {
+        super();
     }
 
     @Override
-    public List<Content> handleAction(String act, ID sender, CustomizedContent content, ReliableMessage rMsg) {
+    public List<Content> handleContent(CustomizedContent content, ReliableMessage rMsg, Messenger messenger) {
+        String act = content.getAction();
+        ID sender = rMsg.getSender();
         if (act == null) {
             throw new IllegalArgumentException("action name empty: " + content);
         } else if (act.equals(ACT_THROW)) {
@@ -66,7 +67,7 @@ public class DriftBottleHandler extends AppContentHandler {
         // TODO: define your actions here
         // ...
 
-        return super.handleAction(act, sender, content, rMsg);
+        return super.handleContent(content, rMsg, messenger);
     }
 
     //

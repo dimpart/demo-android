@@ -25,14 +25,17 @@
  */
 package chat.dim;
 
-import chat.dim.compat.ClientPluginLoader;
 import chat.dim.compat.LibraryLoader;
+import chat.dim.cpu.app.AppCustomizedFilter;
+import chat.dim.cpu.app.SharedCustomizedFilter;
+import chat.dim.cpu.customized.AppContentHandler;
+import chat.dim.cpu.customized.DriftBottleHandler;
 import chat.dim.plugins.CryptoPluginLoader;
 
 public class AppLibraryLoader extends LibraryLoader {
 
    public AppLibraryLoader() {
-      super(null, new ClientPluginLoader());
+      super(null, null);
    }
 
    private final CryptoPluginLoader cryptoPluginLoader = new CryptoPluginLoader();
@@ -40,6 +43,25 @@ public class AppLibraryLoader extends LibraryLoader {
    @Override
    protected void load() {
       super.load();
+
+      registerCryptoPlugins();
+
+      registerCustomizedHandlers();
+
+   }
+
+   private void registerCryptoPlugins() {
       cryptoPluginLoader.load();
+   }
+
+   private void registerCustomizedHandlers() {
+      AppCustomizedFilter filter = (AppCustomizedFilter) SharedCustomizedFilter.filter;
+
+      // 'chat.dim.sechat:drift_bottle'
+      filter.setContentHandler(
+              AppContentHandler.APP_ID,
+              DriftBottleHandler.MOD_NAME,
+              new DriftBottleHandler()
+      );
    }
 }

@@ -28,7 +28,7 @@ package chat.dim.crypto;
 import java.util.HashMap;
 import java.util.Map;
 
-import chat.dim.AppLibraryLoader;
+import chat.dim.compat.LibraryLoader;
 import chat.dim.format.Base64;
 import chat.dim.format.UTF8;
 import chat.dim.log.Log;
@@ -47,7 +47,7 @@ public final class PasswordTest {
     */
    public static void main(String[] args) {
 
-      (new AppLibraryLoader()).run();
+      (new LibraryLoader(null, null)).run();
 
       Log.level = Log.DEBUG;
 
