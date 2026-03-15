@@ -25,7 +25,7 @@
  */
 package chat.dim.cpu.customized;
 
-import chat.dim.cpu.app.BaseCustomizedHandler;
+import chat.dim.cpu.app.BaseCustomizedContentHandler;
 import chat.dim.dkd.app.AppCustomizedContent;
 import chat.dim.protocol.ContentType;
 import chat.dim.protocol.CustomizedContent;
@@ -33,7 +33,7 @@ import chat.dim.protocol.CustomizedContent;
 /**
  *  Handler for App Customized Content
  */
-public abstract class AppContentHandler extends BaseCustomizedHandler {
+public abstract class AppContentHandler extends BaseCustomizedContentHandler {
 
     // Application ID for customized content
     public static final String APP_ID = "chat.dim.sechat";

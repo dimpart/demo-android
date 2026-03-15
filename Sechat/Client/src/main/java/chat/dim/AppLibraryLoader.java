@@ -38,24 +38,28 @@ public class AppLibraryLoader extends LibraryLoader {
       super(null, null);
    }
 
-   private final CryptoPluginLoader cryptoPluginLoader = new CryptoPluginLoader();
+   private final CryptoPluginLoader extraPluginLoader = new CryptoPluginLoader();
+   //private final NativePluginLoader extraPluginLoader = new NativePluginLoader();
 
    @Override
    protected void load() {
       super.load();
 
-      registerCryptoPlugins();
+      loadExtraPlugins();
 
       registerCustomizedHandlers();
 
    }
 
-   private void registerCryptoPlugins() {
-      cryptoPluginLoader.load();
+   private void loadExtraPlugins() {
+
+      extraPluginLoader.load();
+
    }
 
    private void registerCustomizedHandlers() {
-      AppCustomizedFilter filter = (AppCustomizedFilter) SharedCustomizedFilter.filter;
+
+      AppCustomizedFilter filter = (AppCustomizedFilter) SharedCustomizedFilter.customizedFilter;
 
       // 'chat.dim.sechat:drift_bottle'
       filter.setContentHandler(
@@ -63,5 +67,6 @@ public class AppLibraryLoader extends LibraryLoader {
               DriftBottleHandler.MOD_NAME,
               new DriftBottleHandler()
       );
+
    }
 }
