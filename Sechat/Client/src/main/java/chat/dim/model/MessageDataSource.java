@@ -55,7 +55,7 @@ import chat.dim.protocol.ReportCommand;
 import chat.dim.protocol.SearchCommand;
 import chat.dim.protocol.group.QueryCommand;
 
-public class MessageDataSource implements Observer {
+public class MessageDataSource implements Observer, AutoCloseable {
 
     private static final MessageDataSource ourInstance = new MessageDataSource();
     public static MessageDataSource getInstance() { return ourInstance; }
@@ -68,11 +68,11 @@ public class MessageDataSource implements Observer {
     }
 
     @Override
-    protected void finalize() throws Throwable {
+    public void close() {
         NotificationCenter nc = NotificationCenter.getInstance();
         nc.removeObserver(this, NotificationNames.MetaSaved);
         nc.removeObserver(this, NotificationNames.DocumentUpdated);
-        super.finalize();
+        //super.finalize();
     }
 
     private final Map<ID, List<ReliableMessage>> incomingMessages = new HashMap<>();

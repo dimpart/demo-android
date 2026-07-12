@@ -62,7 +62,7 @@ import chat.dim.protocol.TransportableData;
 import chat.dim.protocol.TransportableFile;
 import chat.dim.type.Pair;
 
-public class Emitter implements Observer {
+public class Emitter implements Observer, AutoCloseable {
 
     private FileTransfer ftp = null;
 
@@ -77,11 +77,11 @@ public class Emitter implements Observer {
     }
 
     @Override
-    protected void finalize() throws Throwable {
+    public void close() {
         NotificationCenter nc = NotificationCenter.getInstance();
         nc.removeObserver(this, NotificationNames.FileUploadFailure);
         nc.removeObserver(this, NotificationNames.FileUploadSuccess);
-        super.finalize();
+        //super.finalize();
     }
 
     private FileTransfer getFileTransfer() {
