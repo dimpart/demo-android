@@ -214,7 +214,7 @@ public class AccountViewModel extends UserViewModel {
         Meta meta = Meta.generate(metaVersion, privateKey, seed);
 
         // generate ID
-        ID identifier = ID.generate(meta, network, null);
+        ID identifier = ID.generate(meta, network);
 
         SharedFacebook facebook = getFacebook();
         Archivist archivist = facebook.getArchivist();
