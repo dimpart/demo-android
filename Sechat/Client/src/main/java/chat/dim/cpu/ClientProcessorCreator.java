@@ -43,7 +43,8 @@ public class ClientProcessorCreator extends ClientContentProcessorCreator {
         switch (type) {
             // default
             case ContentType.ANY:
-            case "*":
+            case "0":
+            case "any":
                 return new AnyContentProcessor(getFacebook(), getMessenger());
         }
         // others

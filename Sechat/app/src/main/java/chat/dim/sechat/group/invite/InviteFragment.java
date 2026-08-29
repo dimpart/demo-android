@@ -19,9 +19,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import chat.dim.CommonArchivist;
 import chat.dim.GlobalVariable;
 import chat.dim.SharedFacebook;
-import chat.dim.core.Archivist;
 import chat.dim.group.SharedGroupManager;
 import chat.dim.mkm.BaseBulletin;
 import chat.dim.mkm.User;
@@ -114,7 +114,7 @@ public class InviteFragment extends ListFragment<CandidateViewAdapter, Candidate
                 bulletin.setString("did", group);
                 bulletin.setName(newName);
                 bulletin.sign(sKey);
-                Archivist archivist = facebook.getArchivist();
+                CommonArchivist archivist = facebook.getArchivist();
                 if (archivist != null) {
                     archivist.saveDocument(bulletin, group);
                 }

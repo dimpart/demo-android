@@ -3,10 +3,10 @@ package chat.dim.sechat.account;
 import java.util.HashMap;
 import java.util.Map;
 
+import chat.dim.CommonArchivist;
 import chat.dim.GlobalVariable;
 import chat.dim.SharedFacebook;
 import chat.dim.SharedMessenger;
-import chat.dim.core.Archivist;
 import chat.dim.data.Converter;
 import chat.dim.format.Hex;
 import chat.dim.format.JSON;
@@ -43,7 +43,7 @@ public class AccountViewModel extends UserViewModel {
             return;
         }
         SharedFacebook facebook = getFacebook();
-        Archivist archivist = facebook.getArchivist();
+        CommonArchivist archivist = facebook.getArchivist();
         if (archivist == null) {
             assert false : "facebook (archivist) not ready";
             return;
@@ -217,7 +217,7 @@ public class AccountViewModel extends UserViewModel {
         ID identifier = ID.generate(meta, network);
 
         SharedFacebook facebook = getFacebook();
-        Archivist archivist = facebook.getArchivist();
+        CommonArchivist archivist = facebook.getArchivist();
         if (archivist == null) {
             assert false : "facebook (archivist) not ready";
             return null;

@@ -30,7 +30,6 @@ import chat.dim.cpu.app.AppCustomizedFilter;
 import chat.dim.cpu.app.SharedCustomizedFilter;
 import chat.dim.cpu.customized.AppContentHandler;
 import chat.dim.cpu.customized.DriftBottleHandler;
-import chat.dim.plugins.CryptoPluginLoader;
 
 public class AppLibraryLoader extends LibraryLoader {
 

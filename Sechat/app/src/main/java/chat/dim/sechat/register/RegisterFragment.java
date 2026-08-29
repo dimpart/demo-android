@@ -18,11 +18,11 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.net.URL;
 
+import chat.dim.CommonArchivist;
 import chat.dim.GlobalVariable;
 import chat.dim.Register;
 import chat.dim.SharedFacebook;
 import chat.dim.SharedMessenger;
-import chat.dim.core.Archivist;
 import chat.dim.digest.MD5;
 import chat.dim.format.Hex;
 import chat.dim.http.FileTransfer;
@@ -161,7 +161,7 @@ public class RegisterFragment extends Fragment {
 
         GlobalVariable shared = GlobalVariable.getInstance();
         SharedFacebook facebook = shared.facebook;
-        Archivist archivist = facebook.getArchivist();
+        CommonArchivist archivist = facebook.getArchivist();
         assert archivist != null : "facebook (archivist) not ready";
 
         // 1. create user
@@ -201,6 +201,7 @@ public class RegisterFragment extends Fragment {
         // 4. upload meta & visa to DIM station
         if (ok) {
             SharedMessenger messenger = shared.messenger;
+            // FIXME:
             messenger.postDocument(visa, meta, uid);
         }
 
